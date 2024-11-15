@@ -1,96 +1,97 @@
 import Image from "next/image";
+import Link from "next/link";
+import { Metadata } from "next";
+
+import { Avatar } from "@/components/ui/avatar";
+import { Card, CardContent } from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
+
+export const metadata: Metadata = {
+  title: "Deppfellow - News Board",
+  description:
+    "Read latest updates in world economy, technology, and other interesting topics.",
+};
+
+// const technologies = [
+//   { name: 'JavaScript', icon: Icons.javascript },
+//   { name: 'TypeScript', icon: Icons.typescript },
+//   { name: 'React', icon: Icons.react },
+//   { name: 'Node.js', icon: Icons.node },
+//   // Add other tech stack icons
+// ]
+
+const workExperience = [
+  {
+    company: "AIA SINGAPORE",
+    role: "Frontend Developer",
+    period: "February 2023 - Present",
+    logo: "/aia-logo.png",
+    description:
+      "Part of team responsible for developing and maintain project related to corporate customer app.",
+    highlights: [
+      "Improve existing codebase by upgrading React Native project from version 0.65 to latest stable release",
+      "Monitor flow alerts for security vulnerabilities and fix any issues to maintain a secure codebase",
+      "Consider reusability and understand when code is ready to be shared and delivered",
+      "Perform code reviews and tests, and issue resolution",
+      "Write and manage technical documentation using Atlassian Confluence",
+    ],
+  },
+  // Add other work experiences
+];
 
 export default function Home() {
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
+    <main className="min-h-screen bg-gray-950 text-white px-4 py-8 md:px-8">
+      <div className="max-w-4xl mx-auto">
+        <nav className="flex justify-between items-center mb-16">
+          <div className="flex gap-4">
+            {/* Social icons */}
+            {[...Array(3)].map((_, index) => (
+              <a key={index} href="#" className="text-white">
+                <Image
+                  src={`/icons/social-icon-${index + 1}.png`}
+                  alt={`Icon ${index + 1}`}
+                  width={24}
+                  height={24}
+                />
+              </a>
+            ))}
+          </div>
+          <div className="flex gap-6">
+            {["Home", "About", "Projects", "Posts"].map((item) => (
+              <Link
+                key={item}
+                href={`#${item.toLowerCase()}`}
+                className="text-sm hover:text-lime-400 transition-colors"
+              >
+                {item}
+              </Link>
+            ))}
+          </div>
+        </nav>
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:min-w-44"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
-        </div>
-      </main>
+        <section className="mb-20">
+          <div className="flex flex-col">
+            <Avatar className="w-56 h-56 overflow-visible">
+              {/* <Image src={`/spino.jpg`} alt={`Profile Pics`} height="128" /> */}
+              <img
+                src="/spino.jpg"
+                alt="Spino Image"
+                className="object-cover rounded-sm"
+              />
+            </Avatar>
 
-      {/* Footer */}
-      {/* Footer */}
-      {/* Footer */}
-
-      <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
-    </div>
+            <div>
+              <h1 className="text-4xl font-bold mb-4">
+                Hi, <span className="text-lime-400">Deppfellow</span> here.
+              </h1>
+              <p className="text-2xl mb-6">
+                Frontend engineer with a casual interest in the finance world.
+              </p>
+            </div>
+          </div>
+        </section>
+      </div>
+    </main>
   );
 }

@@ -1,15 +1,15 @@
 import type { Metadata } from "next";
-import { Sora } from "next/font/google";
+import { Noto_Sans } from "next/font/google";
 import "./globals.css";
 
 import { ThemeProvider } from "@/components/ui/theme-provider";
 import { ThemeToggle } from "@/components/ui/theme-toggle";
 
-const sora = Sora({
+const noto_sans = Noto_Sans({
   subsets: ["latin"],
   display: "swap",
-  weight: ["300", "400", "500"],
   style: ["normal", "italic"],
+  weight: ["400", "500", "600"],
 });
 
 export const metadata: Metadata = {
@@ -23,17 +23,14 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang="en" className={noto_sans.className} suppressHydrationWarning>
       <ThemeProvider
         attribute="class"
         defaultTheme="system"
         enableSystem
         disableTransitionOnChange
       >
-        <body>
-          <ThemeToggle />
-          {children}
-        </body>
+        <body>{children}</body>
       </ThemeProvider>
     </html>
   );
